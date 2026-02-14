@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Analysis Challenge - OSINT CTF</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="challenge-style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">🔍 OSINT CTF</div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#challenges">Challenges</a></li>
+                <li><a href="../index.html#about">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="challenge-container">
+        <button class="back-btn" onclick="goBack()">&larr; Back to Challenges</button>
+
+        <div class="challenge-header">
+            <h1>📊 Data Analysis Challenge</h1>
+            <p class="difficulty">Difficulty: <span class="hard">Hard</span></p>
+        </div>
+
+        <div class="challenge-content">
+            <!-- Challenge Scenario -->
+            <section class="challenge-section scenario">
+                <h2>🎯 Challenge Scenario</h2>
+                <div class="scenario-box">
+                    <p>Your team has collected data from multiple sources about suspicious financial transactions. You need to analyze the provided dataset to find patterns, connections, and identify the key players involved.</p>
+                    <p>Your task: Find the connection between three individuals and identify the money laundering scheme.</p>
+                </div>
+            </section>
+
+            <!-- Dataset -->
+            <section class="challenge-section">
+                <h2>📈 Dataset</h2>
+                <div class="dataset-box">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>From Account</th>
+                                <th>To Account</th>
+                                <th>Amount</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2024-01-15</td>
+                                <td>ACC-5432</td>
+                                <td>ACC-7821</td>
+                                <td>$50,000</td>
+                                <td>Wire transfer</td>
+                            </tr>
+                            <tr>
+                                <td>2024-01-16</td>
+                                <td>ACC-7821</td>
+                                <td>ACC-9156</td>
+                                <td>$45,000</td>
+                                <td>Payment</td>
+                            </tr>
+                            <tr>
+                                <td>2024-01-17</td>
+                                <td>ACC-9156</td>
+                                <td>ACC-2048</td>
+                                <td>$40,000</td>
+                                <td>Fund transfer</td>
+                            </tr>
+                            <tr>
+                                <td>2024-01-20</td>
+                                <td>ACC-5432</td>
+                                <td>ACC-2048</td>
+                                <td>$35,000</td>
+                                <td>Investment</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="data-note">Find the hidden connection in this data.</p>
+                </div>
+            </section>
+
+            <!-- Resources -->
+            <section class="challenge-section resources">
+                <h2>📚 Resources & Tools</h2>
+                <div class="resource-grid">
+                    <div class="resource-card">
+                        <h3>🔧 Analysis Tools</h3>
+                        <ul>
+                            <li>Spreadsheet software (Excel, Google Sheets)</li>
+                            <li>Graph visualization tools</li>
+                            <li>Network analysis concepts</li>
+                            <li>Pattern recognition techniques</li>
+                        </ul>
+                    </div>
+                    <div class="resource-card">
+                        <h3>📖 Techniques</h3>
+                        <ul>
+                            <li>Flow analysis and tracing</li>
+                            <li>Timeline reconstruction</li>
+                            <li>Connection mapping</li>
+                            <li>Anomaly detection</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Challenge Tasks -->
+            <section class="challenge-section tasks">
+                <h2>✅ Challenge Tasks</h2>
+                <div class="tasks-list">
+                    <div class="task">
+                        <input type="checkbox" id="task1">
+                        <label for="task1">Create a transaction flow diagram</label>
+                    </div>
+                    <div class="task">
+                        <input type="checkbox" id="task2">
+                        <label for="task2">Identify the pattern in transaction amounts</label>
+                    </div>
+                    <div class="task">
+                        <input type="checkbox" id="task3">
+                        <label for="task3">Map connections between accounts</label>
+                    </div>
+                    <div class="task">
+                        <input type="checkbox" id="task4">
+                        <label for="task4">Identify the final destination/beneficiary</label>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Hints -->
+            <section class="challenge-section hints">
+                <h2>💡 Hints (Click to Reveal)</h2>
+                <div class="hint-item">
+                    <button class="hint-toggle" onclick="toggleHint(this)">Hint 1: Look for Patterns</button>
+                    <div class="hint-content" style="display:none;">
+                        <p>The amounts are decreasing—notice each transfer gets smaller by $5,000. This is a common pattern in money laundering to obscure the original amount.</p>
+                    </div>
+                </div>
+                <div class="hint-item">
+                    <button class="hint-toggle" onclick="toggleHint(this)">Hint 2: Trace the Flow</button>
+                    <div class="hint-content" style="display:none;">
+                        <p>Follow the money: ACC-5432 is the source. It flows through intermediary accounts (ACC-7821, ACC-9156) and eventually reaches ACC-2048. The question is: what's special about the intermediaries?</p>
+                    </div>
+                </div>
+                <div class="hint-item">
+                    <button class="hint-toggle" onclick="toggleHint(this)">Hint 3: The Connection</button>
+                    <div class="hint-content" style="display:none;">
+                        <p>Look at the account numbers. They might reveal something if you convert them or look at the digits. Also note ACC-2048 receives money directly from both ACC-5432 and ACC-9156—it's the final destination.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Flag Submission -->
+            <section class="challenge-section submission">
+                <h2>🚩 Submit Your Answer</h2>
+                <div class="flag-box">
+                    <p>Enter the flag (format: FLAG{final_account})</p>
+                    <div class="input-group">
+                        <input type="text" id="flagInput" placeholder="Enter flag here..." maxlength="100">
+                        <button class="submit-btn" onclick="submitFlag()">Submit Flag</button>
+                    </div>
+                    <div id="feedback" class="feedback"></div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 OSINT CTF. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="challenge-script.js"></script>
+</body>
+</html>

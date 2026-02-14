@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Analysis Challenge - OSINT CTF</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="challenge-style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">🔍 OSINT CTF</div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#challenges">Challenges</a></li>
+                <li><a href="../index.html#about">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="challenge-container">
+        <button class="back-btn" onclick="goBack()">&larr; Back to Challenges</button>
+
+        <div class="challenge-header">
+            <h1>🖼️ Image Analysis Challenge</h1>
+            <p class="difficulty">Difficulty: <span class="easy">Easy</span></p>
+        </div>
+
+        <div class="challenge-content">
+            <!-- Challenge Scenario -->
+            <section class="challenge-section scenario">
+                <h2>🎯 Challenge Scenario</h2>
+                <div class="scenario-box">
+                    <p>A suspect posted an image online claiming to be at an "undisclosed location". However, they didn't realize that images contain hidden metadata called EXIF data. Your task is to extract and analyze this metadata to find clues about the image's origin, the camera used, and when it was taken.</p>
+                </div>
+            </section>
+
+            <!-- Challenge Image -->
+            <section class="challenge-section">
+                <h2>📸 Challenge Image</h2>
+                <div class="image-box">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='400'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23667eea;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%23764ba2;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23grad)' width='500' height='400'/%3E%3Ctext x='50%25' y='50%25' font-size='28' fill='white' text-anchor='middle' dominant-baseline='middle' font-weight='bold'%3EChallenge Image with EXIF Data%3C/text%3E%3C/svg%3E" alt="Challenge Image">
+                    <p class="img-note">This image contains hidden EXIF metadata</p>
+                </div>
+            </section>
+
+            <!-- What is EXIF -->
+            <section class="challenge-section">
+                <h2>ℹ️ What is EXIF Data?</h2>
+                <div class="info-box">
+                    <p><strong>EXIF (Exchangeable Image File Format)</strong> is a standard format for storing metadata in image files. Common EXIF data includes:</p>
+                    <ul class="benefits-list">
+                        <li>✓ Camera make and model</li>
+                        <li>✓ Date and time photo was taken</li>
+                        <li>✓ GPS coordinates (latitude and longitude)</li>
+                        <li>✓ Exposure settings (shutter speed, aperture, ISO)</li>
+                        <li>✓ Image dimensions and orientation</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Resources -->
+            <section class="challenge-section resources">
+                <h2>📚 Resources & Tools</h2>
+                <div class="resource-grid">
+                    <div class="resource-card">
+                        <h3>🔧 EXIF Extraction Tools</h3>
+                        <ul>
+                            <li><a href="https://exiftool.org/" target="_blank">ExifTool</a> - Professional tool</li>
+                            <li><a href="https://www.verexif.com/" target="_blank">VerExif</a> - Online viewer</li>
+                            <li><a href="https://jimpl.com/" target="_blank">Jimpl</a> - Image metadata viewer</li>
+                            <li><a href="https://www.verifyemail.com/exif-viewer.html" target="_blank">Email Verify EXIF</a> - Free online</li>
+                        </ul>
+                    </div>
+                    <div class="resource-card">
+                        <h3>📖 Learning Resources</h3>
+                        <ul>
+                            <li><a href="https://en.wikipedia.org/wiki/Exchangeable_image_file_format" target="_blank">EXIF on Wikipedia</a></li>
+                            <li><a href="https://www.loc.gov/standards/iso/iec/29500/jpeg_profile/ExifVersion2-2.pdf" target="_blank">EXIF Format Spec</a></li>
+                            <li><a href="https://www.thehackernews.com/" target="_blank">Privacy &amp; EXIF Article</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Challenge Tasks -->
+            <section class="challenge-section tasks">
+                <h2>✅ Challenge Tasks</h2>
+                <div class="tasks-list">
+                    <div class="task">
+                        <input type="checkbox" id="task1">
+                        <label for="task1">Extract EXIF data from the image</label>
+                    </div>
+                    <div class="task">
+                        <input type="checkbox" id="task2">
+                        <label for="task2">Identify the camera model used</label>
+                    </div>
+                    <div class="task">
+                        <input type="checkbox" id="task3">
+                        <label for="task3">Find the date and time the photo was taken</label>
+                    </div>
+                    <div class="task">
+                        <input type="checkbox" id="task4">
+                        <label for="task4">Locate GPS coordinates if available</label>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Hints -->
+            <section class="challenge-section hints">
+                <h2>💡 Hints (Click to Reveal)</h2>
+                <div class="hint-item">
+                    <button class="hint-toggle" onclick="toggleHint(this)">Hint 1: Online EXIF Viewers</button>
+                    <div class="hint-content" style="display:none;">
+                        <p>You don't need to install anything! Use online tools like VerExif or Jimpl. Simply upload the image and the tool will display all EXIF metadata automatically.</p>
+                    </div>
+                </div>
+                <div class="hint-item">
+                    <button class="hint-toggle" onclick="toggleHint(this)">Hint 2: Reading EXIF Data</button>
+                    <div class="hint-content" style="display:none;">
+                        <p>When viewing EXIF data, look for fields like "Model" (camera), "DateTime" (when taken), and "GPS" fields. The data is often organized in sections like Image, Camera, GPS, etc.</p>
+                    </div>
+                </div>
+                <div class="hint-item">
+                    <button class="hint-toggle" onclick="toggleHint(this)">Hint 3: GPS Coordinates</button>
+                    <div class="hint-content" style="display:none;">
+                        <p>GPS data in EXIF is usually in format: GPSLatitude, GPSLongitude, GPSAltitude. You can paste the coordinates directly into Google Maps to see the location on a map.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Flag Submission -->
+            <section class="challenge-section submission">
+                <h2>🚩 Submit Your Answer</h2>
+                <div class="flag-box">
+                    <p>Enter the flag (format: FLAG{camera_model})</p>
+                    <div class="input-group">
+                        <input type="text" id="flagInput" placeholder="Enter flag here..." maxlength="100">
+                        <button class="submit-btn" onclick="submitFlag()">Submit Flag</button>
+                    </div>
+                    <div id="feedback" class="feedback"></div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 OSINT CTF. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="challenge-script.js"></script>
+</body>
+</html>

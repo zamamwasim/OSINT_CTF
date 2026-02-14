@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geolocation Challenge - OSINT CTF</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="challenge-style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">🔍 OSINT CTF</div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#challenges">Challenges</a></li>
+                <li><a href="../index.html#about">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="challenge-container">
+        <button class="back-btn" onclick="goBack()">&larr; Back to Challenges</button>
+
+        <div class="challenge-header">
+            <h1>📍 Geolocation Challenge</h1>
+            <p class="difficulty">Difficulty: <span class="easy">Easy</span></p>
+        </div>
+
+        <div class="challenge-content">
+            <!-- Challenge Scenario -->
+            <section class="challenge-section scenario">
+                <h2>🎯 Challenge Scenario</h2>
+                <div class="scenario-box">
+                    <p>Your intelligence team has intercepted a suspicious post on a public forum. The user has shared a photo claiming to be from a "secret location" but made a critical mistake—they didn't remove the metadata.</p>
+                    <p>Your task is to extract the GPS coordinates from the provided image and determine the exact location. This is a critical skill in OSINT investigations.</p>
+                </div>
+            </section>
+
+            <!-- Challenge Image -->
+            <section class="challenge-section">
+                <h2>📸 Challenge Image</h2>
+                <div class="image-box">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect fill='%23333' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' font-size='24' fill='%23888' text-anchor='middle' dominant-baseline='middle'%3ESample Image with EXIF Data%3C/text%3E%3C/svg%3E" alt="Challenge Image">
+                    <p class="img-note">Image contains hidden EXIF metadata with GPS coordinates</p>
+                </div>
+            </section>
+
+            <!-- Resources -->
+            <section class="challenge-section resources">
+                <h2>📚 Resources & Tools</h2>
+                <div class="resource-grid">
+                    <div class="resource-card">
+                        <h3>🔧 Tools Needed</h3>
+                        <ul>
+                            <li><a href="https://exiftool.org/" target="_blank">ExifTool</a> - Extract metadata</li>
+                            <li><a href="https://www.reverseimagesearch.com/" target="_blank">Reverse Image Search</a> - Google Images</li>
+                            <li><a href="https://www.google.com/maps" target="_blank">Google Maps</a> - Verify location</li>
+                        </ul>
+                    </div>
+                    <div class="resource-card">
+                        <h3>📖 Learning Resources</h3>
+                        <ul>
+                            <li><a href="https://en.wikipedia.org/wiki/Geotagging" target="_blank">Understanding Geotagging</a></li>
+                            <li><a href="https://en.wikipedia.org/wiki/Exchangeable_image_file_format" target="_blank">EXIF Format Guide</a></li>
+                            <li><a href="https://www.exif.org/" target="_blank">EXIF Standards</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Challenge Tasks -->
+            <section class="challenge-section tasks">
+                <h2>✅ Challenge Tasks</h2>
+                <div class="tasks-list">
+                    <div class="task">
+                        <input type="checkbox" id="task1">
+                        <label for="task1">Extract EXIF metadata from the challenge image</label>
+                    </div>
+                    <div class="task">
+                        <input type="checkbox" id="task2">
+                        <label for="task2">Identify GPS coordinates in the metadata</label>
+                    </div>
+                    <div class="task">
+                        <input type="checkbox" id="task3">
+                        <label for="task3">Locate the coordinates on Google Maps</label>
+                    </div>
+                    <div class="task">
+                        <input type="checkbox" id="task4">
+                        <label for="task4">Identify nearby landmarks or street names</label>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Hints -->
+            <section class="challenge-section hints">
+                <h2>💡 Hints (Click to Reveal)</h2>
+                <div class="hint-item">
+                    <button class="hint-toggle" onclick="toggleHint(this)">Hint 1: Where to Start</button>
+                    <div class="hint-content" style="display:none;">
+                        <p>Start by using an online EXIF viewer or the exiftool command-line tool. Many online tools can read metadata without needing to install software. Try searching "online EXIF viewer" in Google.</p>
+                    </div>
+                </div>
+                <div class="hint-item">
+                    <button class="hint-toggle" onclick="toggleHint(this)">Hint 2: GPS Format</button>
+                    <div class="hint-content" style="display:none;">
+                        <p>GPS coordinates are typically stored as latitude and longitude. Look for fields like "GPSLatitude" and "GPSLongitude" in the EXIF data. The format is usually degrees, minutes, seconds.</p>
+                    </div>
+                </div>
+                <div class="hint-item">
+                    <button class="hint-toggle" onclick="toggleHint(this)">Hint 3: Verification</button>
+                    <div class="hint-content" style="display:none;">
+                        <p>Once you have coordinates, paste them into Google Maps search bar. If the location seems random or suspicious, you might have the coordinates backwards (latitude/longitude swap).</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Flag Submission -->
+            <section class="challenge-section submission">
+                <h2>🚩 Submit Your Answer</h2>
+                <div class="flag-box">
+                    <p>Enter the flag you found (format: FLAG{answer})</p>
+                    <div class="input-group">
+                        <input type="text" id="flagInput" placeholder="Enter flag here..." maxlength="100">
+                        <button class="submit-btn" onclick="submitFlag()">Submit Flag</button>
+                    </div>
+                    <div id="feedback" class="feedback"></div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 OSINT CTF. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="challenge-script.js"></script>
+</body>
+</html>

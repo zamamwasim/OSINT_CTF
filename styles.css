@@ -130,6 +130,9 @@ body {
     padding: 2rem;
     transition: all 0.3s;
     cursor: pointer;
+    text-decoration: none;
+    display: block;
+    color: inherit;
 }
 
 .challenge-card:hover {

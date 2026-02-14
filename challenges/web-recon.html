@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Reconnaissance Challenge - OSINT CTF</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="challenge-style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">🔍 OSINT CTF</div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#challenges">Challenges</a></li>
+                <li><a href="../index.html#about">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="challenge-container">
+        <button class="back-btn" onclick="goBack()">&larr; Back to Challenges</button>
+
+        <div class="challenge-header">
+            <h1>🌐 Web Reconnaissance Challenge</h1>
+            <p class="difficulty">Difficulty: <span class="medium">Medium</span></p>
+        </div>
+
+        <div class="challenge-content">
+            <!-- Challenge Scenario -->
+            <section class="challenge-section scenario">
+                <h2>🎯 Challenge Scenario</h2>
+                <div class="scenario-box">
+                    <p>You've identified a suspicious domain "example-osint.com" during your investigation. Your task is to gather intelligence about this domain including: hosting provider, registrant information, DNS records, and server details.</p>
+                    <p>This is a fundamental skill in cybersecurity investigations and threat intelligence gathering.</p>
+                </div>
+            </section>
+
+            <!-- Challenge Domain -->
+            <section class="challenge-section">
+                <h2>🔗 Target Domain</h2>
+                <div class="info-box">
+                    <p style="font-size: 1.3rem; font-weight: bold; color: #e94560;">example-osint.com</p>
+                    <p>Research this domain using WHOIS, DNS lookups, and other reconnaissance tools.</p>
+                </div>
+            </section>
+
+            <!-- Resources -->
+            <section class="challenge-section resources">
+                <h2>📚 Resources & Tools</h2>
+                <div class="resource-grid">
+                    <div class="resource-card">
+                        <h3>🔧 WHOIS & DNS Tools</h3>
+                        <ul>
+                            <li><a href="https://www.whois.com/" target="_blank">WHOIS.com</a> - Domain registration info</li>
+                            <li><a href="https://www.nslookup.io/" target="_blank">NSLookup.io</a> - DNS records</li>
+                            <li><a href="https://mxtoolbox.com/" target="_blank">MXToolbox</a> - Mail & DNS tools</li>
+                            <li><a href="https://crt.sh/" target="_blank">Crt.sh</a> - SSL certificates</li>
+                        </ul>
+                    </div>
+                    <div class="resource-card">
+                        <h3>📖 Information to Find</h3>
+                        <ul>
+                            <li>Registrant name and email</li>
+                            <li>Registrar name</li>
+                            <li>Name servers</li>
+                            <li>MX records</li>
+                            <li>IP address</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Challenge Tasks -->
+            <section class="challenge-section tasks">
+                <h2>✅ Challenge Tasks</h2>
+                <div class="tasks-list">
+                    <div class="task">
+                        <input type="checkbox" id="task1">
+                        <label for="task1">Perform WHOIS lookup on the domain</label>
+                    </div>
+                    <div class="task">
+                        <input type="checkbox" id="task2">
+                        <label for="task2">Extract registrant information</label>
+                    </div>
+                    <div class="task">
+                        <input type="checkbox" id="task3">
+                        <label for="task3">Look up DNS records (A, MX, NS)</label>
+                    </div>
+                    <div class="task">
+                        <input type="checkbox" id="task4">
+                        <label for="task4">Find SSL certificate information</label>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Hints -->
+            <section class="challenge-section hints">
+                <h2>💡 Hints (Click to Reveal)</h2>
+                <div class="hint-item">
+                    <button class="hint-toggle" onclick="toggleHint(this)">Hint 1: WHOIS Lookup</button>
+                    <div class="hint-content" style="display:none;">
+                        <p>Visit whois.com and enter the domain name. This will show you registration details, registrar information, and creation date. Some domains have privacy protection enabled.</p>
+                    </div>
+                </div>
+                <div class="hint-item">
+                    <button class="hint-toggle" onclick="toggleHint(this)">Hint 2: DNS Records</button>
+                    <div class="hint-content" style="display:none;">
+                        <p>Use NSLookup.io to query different DNS record types. A records point to the server, MX records to mail servers, and TXT records often contain verification data. Try querying "A", "MX", and "TXT" records separately.</p>
+                    </div>
+                </div>
+                <div class="hint-item">
+                    <button class="hint-toggle" onclick="toggleHint(this)">Hint 3: SSL Certificates</button>
+                    <div class="hint-content" style="display:none;">
+                        <p>Check crt.sh for SSL certificate history. Sometimes old certificates reveal subdomains or reveal when the site was first secured with HTTPS. This can give clues about domain history.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Flag Submission -->
+            <section class="challenge-section submission">
+                <h2>🚩 Submit Your Answer</h2>
+                <div class="flag-box">
+                    <p>Enter the flag (format: FLAG{registrar_name})</p>
+                    <div class="input-group">
+                        <input type="text" id="flagInput" placeholder="Enter flag here..." maxlength="100">
+                        <button class="submit-btn" onclick="submitFlag()">Submit Flag</button>
+                    </div>
+                    <div id="feedback" class="feedback"></div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 OSINT CTF. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="challenge-script.js"></script>
+</body>
+</html>

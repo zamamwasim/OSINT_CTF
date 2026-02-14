@@ -6,11 +6,9 @@ function scrollToSection(sectionId) {
     }
 }
 
-// Handle challenge start
-function startChallenge(challengeType) {
-    alert(`Starting ${challengeType} challenge!\n\nChallenge content coming soon.`);
-    console.log(`Challenge started: ${challengeType}`);
-    // Add challenge logic here
+// Handle challenge card clicks
+function handleChallengeClick(url) {
+    window.location.href = url;
 }
 
 // Handle contact form submission
@@ -67,10 +65,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Keyboard shortcuts
 document.addEventListener('keydown', (e) => {
-    // Press 'c' to scroll to challenges
-    if (e.key.toLowerCase() === 'c') {
-        scrollToSection('challenges');
-    }
     // Press 'h' to scroll to home
     if (e.key.toLowerCase() === 'h') {
         scrollToSection('home');

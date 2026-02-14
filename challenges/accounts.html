@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Investigation Challenge - OSINT CTF</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="challenge-style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">🔍 OSINT CTF</div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#challenges">Challenges</a></li>
+                <li><a href="../index.html#about">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="challenge-container">
+        <button class="back-btn" onclick="goBack()">&larr; Back to Challenges</button>
+
+        <div class="challenge-header">
+            <h1>🔐 Account Investigation Challenge</h1>
+            <p class="difficulty">Difficulty: <span class="medium">Medium</span></p>
+        </div>
+
+        <div class="challenge-content">
+            <!-- Challenge Scenario -->
+            <section class="challenge-section scenario">
+                <h2>🎯 Challenge Scenario</h2>
+                <div class="scenario-box">
+                    <p>You've discovered a suspicious email account: "admin.sec.2019@gmail.com". This account has been linked to a data breach. Your task is to find all online accounts associated with this email address and trace their activity.</p>
+                    <p>Common platforms: social media, code repositories, forums, and other web services that use email registration.</p>
+                </div>
+            </section>
+
+            <!-- Target Information -->
+            <section class="challenge-section">
+                <h2>🎯 Target Email</h2>
+                <div class="info-box">
+                    <p style="font-size: 1.3rem; font-weight: bold; color: #e94560;">admin.sec.2019@gmail.com</p>
+                    <p>Find all accounts registered with this email across different platforms.</p>
+                </div>
+            </section>
+
+            <!-- Resources -->
+            <section class="challenge-section resources">
+                <h2>📚 Resources & Tools</h2>
+                <div class="resource-grid">
+                    <div class="resource-card">
+                        <h3>🔧 Account Finder Tools</h3>
+                        <ul>
+                            <li><a href="https://haveibeenpwned.com/" target="_blank">Have I Been Pwned</a> - Breach database</li>
+                            <li><a href="https://epieos.com/" target="_blank">Epieos</a> - Email & phone finder</li>
+                            <li><a href="https://intelx.io/" target="_blank">IntelX</a> - Darknet search</li>
+                            <li><a href="https://www.google.com" target="_blank">Google Search</a> - Direct search</li>
+                        </ul>
+                    </div>
+                    <div class="resource-card">
+                        <h3>📖 Platforms to Check</h3>
+                        <ul>
+                            <li>GitHub, GitLab, Bitbucket</li>
+                            <li>Twitter, Reddit, Facebook</li>
+                            <li>Stack Overflow, CodePen</li>
+                            <li>HackerOne, Bugcrowd</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Challenge Tasks -->
+            <section class="challenge-section tasks">
+                <h2>✅ Challenge Tasks</h2>
+                <div class="tasks-list">
+                    <div class="task">
+                        <input type="checkbox" id="task1">
+                        <label for="task1">Check email in breach databases</label>
+                    </div>
+                    <div class="task">
+                        <input type="checkbox" id="task2">
+                        <label for="task2">Search for accounts on social media</label>
+                    </div>
+                    <div class="task">
+                        <input type="checkbox" id="task3">
+                        <label for="task3">Look for GitHub or code repository profiles</label>
+                    </div>
+                    <div class="task">
+                        <input type="checkbox" id="task4">
+                        <label for="task4">Document all findings and links</label>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Hints -->
+            <section class="challenge-section hints">
+                <h2>💡 Hints (Click to Reveal)</h2>
+                <div class="hint-item">
+                    <button class="hint-toggle" onclick="toggleHint(this)">Hint 1: Breach Databases</button>
+                    <div class="hint-content" style="display:none;">
+                        <p>Start with haveibeenpwned.com - enter the email address to see if it appears in any known data breaches. This often reveals which platforms the account was registered on.</p>
+                    </div>
+                </div>
+                <div class="hint-item">
+                    <button class="hint-toggle" onclick="toggleHint(this)">Hint 2: Email Search Tools</button>
+                    <div class="hint-content" style="display:none;">
+                        <p>Tools like Epieos can search for this email across multiple platforms simultaneously. They also sometimes reveal phone numbers and additional connected accounts automatically.</p>
+                    </div>
+                </div>
+                <div class="hint-item">
+                    <button class="hint-toggle" onclick="toggleHint(this)">Hint 3: Manual Search</button>
+                    <div class="hint-content" style="display:none;">
+                        <p>Try searching the email directly on Google and GitHub. Google will sometimes show cached pages mentioning the email. GitHub has a built-in user search feature.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Flag Submission -->
+            <section class="challenge-section submission">
+                <h2>🚩 Submit Your Answer</h2>
+                <div class="flag-box">
+                    <p>Enter the flag (format: FLAG{total_accounts_found})</p>
+                    <div class="input-group">
+                        <input type="text" id="flagInput" placeholder="Enter flag here..." maxlength="100">
+                        <button class="submit-btn" onclick="submitFlag()">Submit Flag</button>
+                    </div>
+                    <div id="feedback" class="feedback"></div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 OSINT CTF. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="challenge-script.js"></script>
+</body>
+</html>

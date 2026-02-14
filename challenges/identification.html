@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Person Identification Challenge - OSINT CTF</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="challenge-style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">🔍 OSINT CTF</div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#challenges">Challenges</a></li>
+                <li><a href="../index.html#about">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="challenge-container">
+        <button class="back-btn" onclick="goBack()">&larr; Back to Challenges</button>
+
+        <div class="challenge-header">
+            <h1>👤 Person Identification Challenge</h1>
+            <p class="difficulty">Difficulty: <span class="medium">Medium</span></p>
+        </div>
+
+        <div class="challenge-content">
+            <!-- Challenge Scenario -->
+            <section class="challenge-section scenario">
+                <h2>🎯 Challenge Scenario</h2>
+                <div class="scenario-box">
+                    <p>A suspicious username "TechGuru2019" has been posting on various tech forums and social media platforms. Your task is to identify the person behind this account by cross-referencing information across multiple platforms.</p>
+                    <p>Using only publicly available information, find out: their real name, email address, and any associated social media profiles.</p>
+                </div>
+            </section>
+
+            <!-- Challenge Details -->
+            <section class="challenge-section">
+                <h2>🔍 Given Information</h2>
+                <div class="info-box">
+                    <ul class="info-list">
+                        <li><strong>Username:</strong> TechGuru2019</li>
+                        <li><strong>Known Platforms:</strong> GitHub, Twitter, LinkedIn</li>
+                        <li><strong>Last Known Activity:</strong> Tech forums and OSINT communities</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Resources -->
+            <section class="challenge-section resources">
+                <h2>📚 Resources & Tools</h2>
+                <div class="resource-grid">
+                    <div class="resource-card">
+                        <h3>🔧 Search Tools</h3>
+                        <ul>
+                            <li><a href="https://www.google.com" target="_blank">Google Search</a> - General search</li>
+                            <li><a href="https://github.com" target="_blank">GitHub</a> - Developer profiles</li>
+                            <li><a href="https://www.linkedin.com" target="_blank">LinkedIn</a> - Professional profiles</li>
+                            <li><a href="https://knowem.com" target="_blank">KnowEm</a> - Username search</li>
+                        </ul>
+                    </div>
+                    <div class="resource-card">
+                        <h3>📖 Techniques</h3>
+                        <ul>
+                            <li>Username enumeration across platforms</li>
+                            <li>Email format patterns (firstname.lastname@)</li>
+                            <li>Social media profile cross-reference</li>
+                            <li>Domain WHOIS lookups</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Challenge Tasks -->
+            <section class="challenge-section tasks">
+                <h2>✅ Challenge Tasks</h2>
+                <div class="tasks-list">
+                    <div class="task">
+                        <input type="checkbox" id="task1">
+                        <label for="task1">Search for the username across multiple platforms</label>
+                    </div>
+                    <div class="task">
+                        <input type="checkbox" id="task2">
+                        <label for="task2">Find GitHub profile and analyze repositories</label>
+                    </div>
+                    <div class="task">
+                        <input type="checkbox" id="task3">
+                        <label for="task3">Identify patterns in repository names or descriptions</label>
+                    </div>
+                    <div class="task">
+                        <input type="checkbox" id="task4">
+                        <label for="task4">Cross-reference email or real name found in commits</label>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Hints -->
+            <section class="challenge-section hints">
+                <h2>💡 Hints (Click to Reveal)</h2>
+                <div class="hint-item">
+                    <button class="hint-toggle" onclick="toggleHint(this)">Hint 1: Start with Username</button>
+                    <div class="hint-content" style="display:none;">
+                        <p>Try searching the username directly on Google. Often people use the same username across multiple platforms. Also try using KnowEm or similar username search engines.</p>
+                    </div>
+                </div>
+                <div class="hint-item">
+                    <button class="hint-toggle" onclick="toggleHint(this)">Hint 2: GitHub Profiles</button>
+                    <div class="hint-content" style="display:none;">
+                        <p>GitHub profiles often contain real names in the profile description or in git commit history. Check the repositories for commit metadata which may contain email addresses.</p>
+                    </div>
+                </div>
+                <div class="hint-item">
+                    <button class="hint-toggle" onclick="toggleHint(this)">Hint 3: Cross-Platform</button>
+                    <div class="hint-content" style="display:none;">
+                        <p>Once you find one real profile (like GitHub), look for links to other profiles on the same page. LinkedIn often has similar profile pictures or information about the same person.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Flag Submission -->
+            <section class="challenge-section submission">
+                <h2>🚩 Submit Your Answer</h2>
+                <div class="flag-box">
+                    <p>Enter the flag in format: FLAG{real_name_email}</p>
+                    <div class="input-group">
+                        <input type="text" id="flagInput" placeholder="Enter flag here..." maxlength="100">
+                        <button class="submit-btn" onclick="submitFlag()">Submit Flag</button>
+                    </div>
+                    <div id="feedback" class="feedback"></div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 OSINT CTF. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="challenge-script.js"></script>
+</body>
+</html>
