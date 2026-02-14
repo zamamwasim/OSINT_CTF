@@ -52,6 +52,45 @@ window.addEventListener('scroll', () => {
     });
 });
 
+// Initialize page
+window.addEventListener('load', () => {
+    // Check if user is logged in
+    if (typeof auth !== 'undefined' && auth.isLoggedIn()) {
+        const username = auth.getCurrentUser();
+        updateNavigation(username);
+    }
+});
+
+// Update navigation based on auth status
+function updateNavigation(username) {
+    const authNav = document.querySelector('.auth-nav');
+    if (authNav) {
+        authNav.innerHTML = `
+            <span class="username">${username}</span>
+            <a href="dashboard.html" class="btn-login">Dashboard</a>
+            <button class="logout-btn" onclick="handleLogout()">Logout</button>
+        `;
+    }
+}
+
+// Handle logout
+function handleLogout() {
+    if (confirm('Are you sure you want to logout?')) {
+        if (typeof auth !== 'undefined') {
+            auth.logout();
+        }
+        window.location.href = 'index.html';
+    }
+}
+
+// Keyboard shortcuts
+document.addEventListener('keydown', (e) => {
+    // Press 'h' to scroll to home
+    if (e.key.toLowerCase() === 'h') {
+        scrollToSection('home');
+    }
+});
+
 // Initialize animations on page load
 document.addEventListener('DOMContentLoaded', () => {
     console.log('OSINT CTF Website loaded');
@@ -61,14 +100,6 @@ document.addEventListener('DOMContentLoaded', () => {
     challengeCards.forEach((card, index) => {
         card.style.animation = `fadeIn 0.5s ease-in-out ${index * 0.1}s`;
     });
-});
-
-// Keyboard shortcuts
-document.addEventListener('keydown', (e) => {
-    // Press 'h' to scroll to home
-    if (e.key.toLowerCase() === 'h') {
-        scrollToSection('home');
-    }
 });
 
 // Add some animations

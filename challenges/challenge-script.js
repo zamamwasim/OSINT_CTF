@@ -1,6 +1,25 @@
+// Check authentication
+function checkUserAuth() {
+    if (typeof auth !== 'undefined') {
+        return auth.isLoggedIn();
+    }
+    return false;
+}
+
+// Get challenge ID from current page
+function getChallengeId() {
+    const pathname = window.location.pathname;
+    return pathname.split('/').pop().replace('.html', '');
+}
+
 // Go back to challenges page
 function goBack() {
-    window.location.href = '../index.html#challenges';
+    const currentUser = typeof auth !== 'undefined' ? auth.getCurrentUser() : null;
+    if (currentUser) {
+        window.location.href = '../dashboard.html';
+    } else {
+        window.location.href = '../index.html#challenges';
+    }
 }
 
 // Toggle hint visibility
@@ -48,6 +67,14 @@ function submitFlag() {
     // Log submission
     console.log('Flag submitted:', flagValue);
     
+    // Track progress if user is logged in
+    if (typeof auth !== 'undefined' && auth.isLoggedIn()) {
+        const username = auth.getCurrentUser();
+        const challengeId = getChallengeId();
+        auth.updateProgress(username, challengeId, true);
+        console.log('Progress saved for user:', username);
+    }
+    
     // Clear input after 2 seconds
     setTimeout(() => {
         input.value = '';
@@ -58,6 +85,11 @@ function submitFlag() {
 document.addEventListener('DOMContentLoaded', () => {
     const flagInput = document.getElementById('flagInput');
     if (flagInput) {
+    
+    // Show login prompt if not logged in
+    if (typeof auth === 'undefined' || !auth.isLoggedIn()) {
+        console.log('User not logged in - progress will not be saved');
+    }
         flagInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
                 submitFlag();

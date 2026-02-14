@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login / Register - OSINT CTF</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="auth-style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo"><a href="index.html">🔍 OSINT CTF</a></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="auth-container">
+        <div class="auth-wrapper">
+            <div class="auth-form-container">
+                <!-- Login Form -->
+                <div class="auth-form" id="loginForm">
+                    <h1>Welcome Back</h1>
+                    <p class="subtitle">Login to your OSINT CTF account</p>
+                    
+                    <form onsubmit="handleLogin(event)">
+                        <div class="form-group">
+                            <label for="login-username">Username</label>
+                            <input type="text" id="login-username" placeholder="Enter your username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="login-password">Password</label>
+                            <input type="password" id="login-password" placeholder="Enter your password" required>
+                        </div>
+                        <button type="submit" class="submit-btn">Login</button>
+                    </form>
+
+                    <div id="login-feedback" class="feedback"></div>
+
+                    <p class="toggle-text">
+                        Don't have an account? 
+                        <button type="button" class="toggle-btn" onclick="toggleForm()">Create one</button>
+                    </p>
+                </div>
+
+                <!-- Register Form -->
+                <div class="auth-form hidden" id="registerForm">
+                    <h1>Create Account</h1>
+                    <p class="subtitle">Join the OSINT CTF community</p>
+                    
+                    <form onsubmit="handleRegister(event)">
+                        <div class="form-group">
+                            <label for="register-username">Username</label>
+                            <input type="text" id="register-username" placeholder="Choose a username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="register-email">Email</label>
+                            <input type="email" id="register-email" placeholder="Enter your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="register-password">Password</label>
+                            <input type="password" id="register-password" placeholder="At least 6 characters" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="register-confirm">Confirm Password</label>
+                            <input type="password" id="register-confirm" placeholder="Confirm your password" required>
+                        </div>
+                        <button type="submit" class="submit-btn">Create Account</button>
+                    </form>
+
+                    <div id="register-feedback" class="feedback"></div>
+
+                    <p class="toggle-text">
+                        Already have an account? 
+                        <button type="button" class="toggle-btn" onclick="toggleForm()">Login here</button>
+                    </p>
+                </div>
+            </div>
+
+            <div class="auth-info">
+                <h2>Why Create an Account?</h2>
+                <ul class="benefits">
+                    <li>📊 Track your progress and scores</li>
+                    <li>🏆 Compete on the leaderboard</li>
+                    <li>🎯 Continue where you left off</li>
+                    <li>💾 Save your completed challenges</li>
+                    <li>📈 View detailed statistics</li>
+                </ul>
+
+                <div class="demo-info">
+                    <h3>Demo Account</h3>
+                    <p>Try it out with these credentials:</p>
+                    <code>
+                        Username: <strong>demo</strong><br>
+                        Password: <strong>demo123</strong>
+                    </code>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+    <script src="auth-page.js"></script>
+</body>
+</html>

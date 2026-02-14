@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - OSINT CTF</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="dashboard-style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo"><a href="index.html">🔍 OSINT CTF</a></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#challenges">Challenges</a></li>
+                <li class="user-nav">
+                    <span id="username-display" class="username"></span>
+                    <button class="logout-btn" onclick="handleLogout()">Logout</button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <div class="container">
+            <!-- Header -->
+            <div class="dashboard-header">
+                <h1 id="welcome-text">Welcome Back!</h1>
+                <p>Track your OSINT CTF progress and compete with others</p>
+            </div>
+
+            <!-- Stats Overview -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Total Score</h3>
+                    <p class="stat-value" id="total-score">0</p>
+                    <p class="stat-label">points earned</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Challenges Completed</h3>
+                    <p class="stat-value" id="challenges-completed">0</p>
+                    <p class="stat-label">out of 6</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Completion Rate</h3>
+                    <p class="stat-value" id="completion-rate">0%</p>
+                    <p class="stat-label">progress</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Leaderboard Rank</h3>
+                    <p class="stat-value" id="leaderboard-rank">-</p>
+                    <p class="stat-label">position</p>
+                </div>
+            </div>
+
+            <!-- Progress Section -->
+            <div class="dashboard-section">
+                <h2>📊 Challenge Progress</h2>
+                <div class="challenges-list" id="challengesList"></div>
+            </div>
+
+            <!-- Leaderboard Section -->
+            <div class="dashboard-section">
+                <h2>🏆 Top Players</h2>
+                <div class="leaderboard-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Username</th>
+                                <th>Score</th>
+                                <th>Challenges</th>
+                            </tr>
+                        </thead>
+                        <tbody id="leaderboardBody"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="dashboard-actions">
+                <a href="index.html#challenges" class="btn-primary">Continue Challenges</a>
+                <button class="btn-secondary" onclick="handleLogout()">Logout</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 OSINT CTF. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="auth.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>
